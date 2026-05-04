@@ -37,11 +37,24 @@ class Teacher extends Person {
   }
 }
 
+//** function guard
+
+const isStudent = (user: Person) => {
+  return user instanceof Student;
+};
+
+const isTeacher = (user: Person) => {
+  return user instanceof Teacher;
+};
+
 // as class is a blue print so we can use class a type
 const userInfo = (user: Person) => {
-  if (user instanceof Student) {
+  //! (user instanceof Student) replaced with isStudent(..) func guard
+  if (isStudent(user)) {
     user.doStudy(6);
-  } else if (user instanceof Teacher) {
+  }
+  // !  (user instanceof Teacher )replaced with isTeacher(..) func guard
+  else if (isTeacher(user)) {
     user.takeClass(3);
   } else {
     user.getSleep(10);
@@ -51,8 +64,8 @@ const userInfo = (user: Person) => {
 // now creating a instance
 const student1 = new Student("MR Student");
 const teacher1 = new Teacher("MR Student");
-const user = new Person("Jamil")
+const user = new Person("Jamil");
 
 userInfo(student1);
-userInfo(teacher1)
-userInfo(user)
+userInfo(teacher1);
+userInfo(user);
