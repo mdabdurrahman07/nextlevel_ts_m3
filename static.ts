@@ -3,11 +3,11 @@
 class Counter {
   // by using static this will have only one reference
   static count: number = 0;
-  increment() {
+  static increment() {
     // Property 'count' does not exist on type 'Counter'. Did you mean to access the static member 'Counter.count' instead?
     return (Counter.count = Counter.count + 1);
   }
-  decrement() {
+  static decrement() {
     return (Counter.count = Counter.count - 1);
   }
 }
@@ -30,15 +30,12 @@ class Counter {
 
 // after using static
 
-// ! both instance1 & instance2 are using same memory
-const instance1 = new Counter();
-console.log("instance1", instance1.increment()); //->1
-console.log("instance1", instance1.increment()); //->2
-console.log("instance1", instance1.increment()); //->3
-console.log("instance1", instance1.increment()); //->4
+// ! both instance1 & instance2 are using same memory also we don't have to define any instance for this
 
-const instance2 = new Counter();
-console.log("instance2", instance2.increment()); //-> 5
-console.log("instance2", instance2.increment()); //-> 6
-console.log("instance2", instance2.increment()); //-> 7
-console.log("instance2", instance2.increment()); //-> 8
+console.log(Counter.increment())
+console.log(Counter.increment())
+console.log(Counter.increment())
+console.log(Counter.increment())
+console.log(Counter.increment())
+console.log(Counter.increment())
+console.log(Counter.increment())
